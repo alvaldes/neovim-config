@@ -4,6 +4,7 @@ call plug#begin('~/AppData/Local/nvim/plugged') 	"directorio donde se van a inst
 
 "syntax
 Plug 'sheerun/vim-polyglot'             "Hight light
+Plug 'http://github.com/prettier/vim-prettier.git'
 
 "status bar
 Plug 'maximbaz/lightline-ale'
@@ -15,7 +16,6 @@ Plug 'itchyny/lightline.vim'
 "Plug 'joshdick/onedark.vim' 	
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
-
 
 "Tree
 Plug 'preservim/nerdtree'		"gestor de archivos en forma de arbol.
@@ -35,11 +35,16 @@ Plug 'mattn/emmet-vim' 			"emmet para diseño web
 Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+
 "Plug 'terryma/vim-multiple-cursors'
 Plug 'easymotion/vim-easymotion'
 Plug 'mhinz/vim-signify'
 Plug 'Yggdroot/indentLine'
 Plug 'scrooloose/nerdcommenter'
+
+" Markdown
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -70,9 +75,17 @@ colorscheme gruvbox 			"activar el tema
 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 "PLUGIN CONFIG
 
+"Markdown
+let g:UtilSnipsExpandTrigger="<tab>"
+let g:UtilSnipsJumpForwardTrigger="<c-b"
+let g:UtilSnipsJumpBackwardTrigger="<c-z"
+
 "configuracion de emmet-vim
 let g:user_emmet_leader_key=',' 	"mapeando la tecla lider por una coma, con esto se completa los tag con doble coma.
 
+"Pritter
+inoremap <c-p> <Esc>:Prettier<cr>
+nnoremap <c-p> <Esc>:Prettier<cr>
 
 "configuracion de vim-airline
 let g:airline#extensions#tabline#enabled = 1	"muestra la linea de pestaña en la que estamos buffer
@@ -121,7 +134,7 @@ set signcolumn=yes
 
 ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 "MAPPING
-let mapleader=" "
+let mapleader="\<Space>"
 
 "configuracion de nerdtree
 "mapeando el abrir y cerrar de nerdtree con nerdtreetoggle vemos los archivos en el arbol y podemos cerrarlo a la vez, map es la C mayuscula representa el
@@ -135,7 +148,7 @@ nnoremap <Leader>< 10<C-w><
 
 
 nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q:q<CR>
+nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :q!<CR>
 
 " plugs
@@ -151,6 +164,7 @@ nnoremap <Leader>j :m .+1<CR>==
 " tabs navigation
 map <Leader>h :tabprevious<cr>
 map <Leader>l :tabnext<cr>
+
 " buffers
 map <Leader>b :Buffers<cr>
 
